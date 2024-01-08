@@ -1,0 +1,29 @@
+steps:
+  # Leaderboards
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'us-east4-docker.pkg.dev/nestjs-leaderboard-microservice-378423/leaderboards/production',
+        '-f',
+        'apps/leaderboards/Dockerfile',
+        '.',
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      ['push', 'us-east4-docker.pkg.dev/nestjs-leaderboard-microservice-378423/leaderboards/production']
+
+  # Auth
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'us-east4-docker.pkg.dev/nestjs-leaderboard-microservice-378423/auth/production',
+        '-f',
+        'apps/auth/Dockerfile',
+        '.',
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-east4-docker.pkg.dev/nestjs-leaderboard-microservice-378423/auth/production']

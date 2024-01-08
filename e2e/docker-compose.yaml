@@ -1,0 +1,24 @@
+services:
+  e2e:
+    build:
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./specs:/usr/src/app/specs
+    depends_on:
+      - leaderboards
+      - auth
+      - mongo
+  leaderboards:
+    image: us-east4-docker.pkg.dev/nestjs-leaderboard-microservice-378423/leaderboards/production
+    env_file:
+      - ../apps/leaderboards/.env
+    ports:
+      - '3000:3000'
+  auth:
+    image: us-east4-docker.pkg.dev/nestjs-leaderboard-microservice-378423/auth/production
+    env_file:
+      - ../apps/auth/.env
+    ports:
+      - '3001:3001'
+  mongo:
+    image: mongo
