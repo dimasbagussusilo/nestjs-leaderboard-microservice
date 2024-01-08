@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "6004fa5c-ad4d-459e-bf07-dd2a6e6d2251",
+		"name": "NestJs Leadboard Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11097539"
+	},
+	"item": [
+		{
+			"name": "Leaderboard",
+			"item": [
+				{
+					"name": "Create Leaderboard",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"gaming\",\n    \"title\": \"Gaming Leaderboard\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LEADERBOARD_SERVICE_URL}}/leaderboards",
+							"host": [
+								"{{LEADERBOARD_SERVICE_URL}}"
+							],
+							"path": [
+								"leaderboards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Leaderboards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{LEADERBOARD_SERVICE_URL}}/leaderboards",
+							"host": [
+								"{{LEADERBOARD_SERVICE_URL}}"
+							],
+							"path": [
+								"leaderboards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Leaderboard",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{LEADERBOARD_SERVICE_URL}}/leaderboards/655472b4166608d475b78c6f",
+							"host": [
+								"{{LEADERBOARD_SERVICE_URL}}"
+							],
+							"path": [
+								"leaderboards",
+								"655472b4166608d475b78c6f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Get Authorized User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{AUTH_SERVICE_URL}}/users",
+							"host": [
+								"{{AUTH_SERVICE_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"dbs@gmail.com\",\n    \"password\": \"Password123!!!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{AUTH_SERVICE_URL}}/auth/login",
+							"host": [
+								"{{AUTH_SERVICE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Dimas Bagus Susilo\",\n    \"email\": \"dbs@gmail.com\",\n    \"password\":\"Password123!!!\",\n    \"roles\": [\"Admin\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{AUTH_SERVICE_URL}}/users",
+							"host": [
+								"{{AUTH_SERVICE_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Score",
+			"item": [
+				{
+					"name": "Create Score",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"leaderboard_id\":\"659c2e2486f2c66b018b1119\",\n    \"user_id\": \"659c2e1ab15ed6d4e9b1966b\",\n    \"score\": 12\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{LEADERBOARD_SERVICE_URL}}/scores",
+							"host": [
+								"{{LEADERBOARD_SERVICE_URL}}"
+							],
+							"path": [
+								"scores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Score",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{LEADERBOARD_SERVICE_URL}}/scores/6554640a2acb201a86e1ca97",
+							"host": [
+								"{{LEADERBOARD_SERVICE_URL}}"
+							],
+							"path": [
+								"scores",
+								"6554640a2acb201a86e1ca97"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "LEADERBOARD_SERVICE_URL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "AUTH_SERVICE_URL",
+			"value": "http://localhost:3001",
+			"type": "string"
+		}
+	]
+}
