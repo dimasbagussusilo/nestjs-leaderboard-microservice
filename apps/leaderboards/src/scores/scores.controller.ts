@@ -11,7 +11,7 @@ import {
 import { ScoresService } from "./scores.service";
 import { CreateScoreDto } from "./dto/create-score.dto";
 import { UpdateScoreDto } from "./dto/update-score.dto";
-import { JwtAuthGuard } from "@app/common";
+import {CurrentUser, JwtAuthGuard, UserDocument, UserDto} from "@app/common";
 import { Throttle } from "@nestjs/throttler";
 
 @Controller("scores")
@@ -23,9 +23,12 @@ export class ScoresController {
   @Post()
   async create(
     @Body() createScoreDto: CreateScoreDto,
-    // @CurrentUser() user: UserDto,
+    @CurrentUser() user: UserDocument,
   ) {
     try {
+      if (!user.roles.map(r => r.toLowerCase()).includes("admin")) {
+        createScoreDto.user_id = user._id.toString()
+      }
       return await this.scoresService.create(createScoreDto);
     } catch (e) {
       return e;

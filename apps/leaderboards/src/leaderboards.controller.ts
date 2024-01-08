@@ -49,7 +49,7 @@ export class LeaderboardsController {
 
   @Delete(":id")
   @UseGuards(JwtAuthGuard)
-  // @Roles("Admin")
+  @Roles("Admin")
   async remove(@Param("id") id: string) {
     return this.leaderboardsService.remove(id);
   }
