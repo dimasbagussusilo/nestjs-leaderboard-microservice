@@ -122,6 +122,7 @@ export class LeaderboardsService {
                             in: {
                                 _id: "$$uc._id",
                                 user_id: "$$uc.user_id",
+                                score: "$$uc.score",
                             }
                         }
                     },
